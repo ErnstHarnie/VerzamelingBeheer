@@ -24,9 +24,11 @@ public final class frmCategorieBeheer extends javax.swing.JFrame {
         // pnlEdit.setVisible(false);
         lblId.setVisible(false);
         pnlEdit.setVisible(false);
-
+        ClearTextboxes();
         RefreshList();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +53,12 @@ public final class frmCategorieBeheer extends javax.swing.JFrame {
         checkbox1 = new java.awt.Checkbox();
         btnToevoegen = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lstCategories.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -182,6 +189,12 @@ public final class frmCategorieBeheer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ClearTextboxes()
+    {
+        txtNaam.setText("");
+        txtEditNaam.setText("");
+    }
+    
     private void btnToevoegenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToevoegenActionPerformed
         if ("".equals(txtNaam.getText())) {
             JOptionPane.showMessageDialog(null, "Vul een categorie in.", "Vul categorie in", ERROR_MESSAGE);
@@ -190,6 +203,7 @@ public final class frmCategorieBeheer extends javax.swing.JFrame {
             categorie.setNaam(txtNaam.getText());
             CategorieService.CategorieOpslaan(categorie);
             RefreshList();
+            ClearTextboxes();
         }
     }//GEN-LAST:event_btnToevoegenActionPerformed
 
@@ -204,7 +218,7 @@ public final class frmCategorieBeheer extends javax.swing.JFrame {
 
             txtEditNaam.setText(categorie.getNaam());
             lblId.setText(Integer.toString(id));
-
+            
         }
         RefreshList();
     }//GEN-LAST:event_lstCategoriesValueChanged
@@ -217,7 +231,7 @@ public final class frmCategorieBeheer extends javax.swing.JFrame {
             categorie.setId(Integer.parseInt(lblId.getText()));
             categorie.setNaam(txtEditNaam.getText());
             CategorieService.CategorieOpslaan(categorie);
-
+            ClearTextboxes();
             RefreshList();
         }
 
@@ -230,6 +244,7 @@ public final class frmCategorieBeheer extends javax.swing.JFrame {
             pnlEdit.validate();
             pnlEdit.repaint();
             RefreshList();
+            ClearTextboxes();
         }
         else
         {
@@ -237,6 +252,10 @@ public final class frmCategorieBeheer extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnVerwijderenActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

@@ -25,6 +25,7 @@ public final class frmTypeBeheer extends javax.swing.JFrame {
         // pnlEdit.setVisible(false);
         lblId.setVisible(false);
         pnlEdit.setVisible(false);
+        
         RefreshList();
     }
 
@@ -51,7 +52,7 @@ public final class frmTypeBeheer extends javax.swing.JFrame {
         checkbox1 = new java.awt.Checkbox();
         btnToevoegen = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -200,6 +201,12 @@ public final class frmTypeBeheer extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnToevoegenActionPerformed
 
+        private void ClearTextboxes()
+        {
+            txtEditNaam.setText("");
+            txtNaam.setText("");
+        }
+    
     private void lstTypesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstTypesValueChanged
         if (lstTypes.getSelectedIndex() != -1) {
             pnlEdit.setVisible(true);

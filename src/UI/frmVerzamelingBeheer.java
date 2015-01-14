@@ -38,8 +38,20 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
             cmbCategorie.addItem(categorie.getNaam());
             cmbEditCategorie.addItem(categorie.getNaam());
         }
-
+        
+        ShowEditItems(false);
         RefreshList();
+    }
+    
+    private void ShowEditItems(boolean result)
+    {
+        pnlEdit.setVisible(result);
+        cmbEditCategorie.setVisible(result);
+        cmbEditType.setVisible(result);
+        lblType.setVisible(result);
+        lblCategorie.setVisible(result);
+        btnBewerken.setVisible(result);
+        btnVerwijderen.setVisible(result);
     }
 
     /**
@@ -63,25 +75,23 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
         cmbCategorie = new javax.swing.JComboBox();
         cmbType = new javax.swing.JComboBox();
         pnlEdit = new java.awt.Panel();
-        label7 = new java.awt.Label();
-        label8 = new java.awt.Label();
         txtEditBeschrijving = new javax.swing.JTextField();
         label9 = new java.awt.Label();
         txtEditNaam = new javax.swing.JTextField();
         label10 = new java.awt.Label();
-        cmbEditCategorie = new javax.swing.JComboBox();
-        label11 = new java.awt.Label();
-        cmbEditType = new javax.swing.JComboBox();
         lblId = new javax.swing.JLabel();
-        btnBewerken = new javax.swing.JButton();
-        btnVerwijderen = new javax.swing.JButton();
         checkbox1 = new java.awt.Checkbox();
         chkEditInBezit = new javax.swing.JCheckBox();
         btnToevoegen = new javax.swing.JButton();
         chkInbezit = new javax.swing.JCheckBox();
-        lblError = new javax.swing.JLabel();
+        btnBewerken = new javax.swing.JButton();
+        btnVerwijderen = new javax.swing.JButton();
+        cmbEditType = new javax.swing.JComboBox();
+        cmbEditCategorie = new javax.swing.JComboBox();
+        lblType = new java.awt.Label();
+        lblCategorie = new java.awt.Label();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lstVerzamelingen.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -105,19 +115,76 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
 
         label6.setText("Type");
 
+        cmbCategorie.setMaximumRowCount(1000);
         cmbCategorie.setToolTipText("");
 
-        label7.setText("categorie");
-
-        label8.setText("Type");
+        cmbType.setMaximumRowCount(1000);
 
         label9.setText("Naam");
 
         label10.setText("Beschrijving");
 
-        cmbEditCategorie.setToolTipText("");
+        checkbox1.setLabel("checkbox1");
 
-        label11.setText("In bezit");
+        chkEditInBezit.setText("In bezit");
+
+        javax.swing.GroupLayout pnlEditLayout = new javax.swing.GroupLayout(pnlEdit);
+        pnlEdit.setLayout(pnlEditLayout);
+        pnlEditLayout.setHorizontalGroup(
+            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
+                        .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblId))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
+                        .addGap(0, 99, Short.MAX_VALUE)
+                        .addComponent(chkEditInBezit, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlEditLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlEditLayout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addComponent(txtEditNaam, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
+                        .addGroup(pnlEditLayout.createSequentialGroup()
+                            .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtEditBeschrijving)))
+                    .addContainerGap()))
+        );
+        pnlEditLayout.setVerticalGroup(
+            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEditLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblId)
+                    .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(chkEditInBezit)
+                .addGap(16, 16, 16))
+            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlEditLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(txtEditNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtEditBeschrijving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(48, Short.MAX_VALUE)))
+        );
+
+        btnToevoegen.setText("Toevoegen");
+        btnToevoegen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnToevoegenActionPerformed(evt);
+            }
+        });
+
+        chkInbezit.setText("In bezit");
 
         btnBewerken.setText("Bewerken");
         btnBewerken.addActionListener(new java.awt.event.ActionListener() {
@@ -133,98 +200,14 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
             }
         });
 
-        checkbox1.setLabel("checkbox1");
+        cmbEditType.setMaximumRowCount(1000);
 
-        chkEditInBezit.setText("In bezit");
+        cmbEditCategorie.setMaximumRowCount(1000);
+        cmbEditCategorie.setToolTipText("");
 
-        javax.swing.GroupLayout pnlEditLayout = new javax.swing.GroupLayout(pnlEdit);
-        pnlEdit.setLayout(pnlEditLayout);
-        pnlEditLayout.setHorizontalGroup(
-            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEditLayout.createSequentialGroup()
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEditLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblId))
-                    .addGroup(pnlEditLayout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addComponent(btnBewerken, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVerwijderen, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
-                            .addGroup(pnlEditLayout.createSequentialGroup()
-                                .addComponent(chkEditInBezit, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlEditLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlEditLayout.createSequentialGroup()
-                            .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(43, 43, 43)
-                            .addComponent(txtEditNaam, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
-                        .addGroup(pnlEditLayout.createSequentialGroup()
-                            .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(51, 51, 51)
-                            .addComponent(cmbEditType, 0, 182, Short.MAX_VALUE))
-                        .addGroup(pnlEditLayout.createSequentialGroup()
-                            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtEditBeschrijving, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                                .addComponent(cmbEditCategorie, 0, 182, Short.MAX_VALUE))))
-                    .addContainerGap()))
-        );
-        pnlEditLayout.setVerticalGroup(
-            pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlEditLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblId)
-                .addGap(65, 65, 65)
-                .addComponent(chkEditInBezit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBewerken)
-                    .addComponent(btnVerwijderen))
-                .addContainerGap())
-            .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlEditLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtEditNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtEditBeschrijving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cmbEditCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnlEditLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbEditType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(41, Short.MAX_VALUE)))
-        );
+        lblType.setText("Type");
 
-        btnToevoegen.setText("Toevoegen");
-        btnToevoegen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnToevoegenActionPerformed(evt);
-            }
-        });
-
-        chkInbezit.setText("In bezit");
-
-        lblError.setText("jLabel1");
+        lblCategorie.setText("categorie");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,36 +243,57 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
                             .addComponent(cmbType, 0, 121, Short.MAX_VALUE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(pnlEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(lblError)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBewerken, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVerwijderen, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(cmbEditType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbEditCategorie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(pnlEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtBeschrijving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBeschrijving, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
                         .addComponent(chkInbezit))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(lblError)))
+                        .addGap(30, 30, 30)
+                        .addComponent(pnlEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmbEditCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbEditType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBewerken)
+                            .addComponent(btnVerwijderen))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -305,7 +309,7 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
                     .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnToevoegen)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -322,13 +326,14 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
             verzameling.setCategoryId(cmbCategorie.getSelectedIndex());
             verzameling.setTypeId(cmbType.getSelectedIndex());
             VerzamelingService.VerzamelingOpslaan(verzameling);
+            ClearTextboxes();
             RefreshList();
         }
     }//GEN-LAST:event_btnToevoegenActionPerformed
 
     private void lstVerzamelingenValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstVerzamelingenValueChanged
         if (lstVerzamelingen.getSelectedIndex() != -1) {
-            pnlEdit.setVisible(true);
+            ShowEditItems(true);
             pnlEdit.validate();
             pnlEdit.repaint();
             Verzameling verzamelingId = (Verzameling) lstVerzamelingen.getSelectedValue();
@@ -360,11 +365,11 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
         //Verzameling verzameling = new Verzameling();
         //Verzameling verzamelingId = (Verzameling)lstVerzamelingen.getSelectedValue();
         //Verzameling verzameling = VerzamelingService.GetVerzameling(verzamelingId.getId());
-        if (!"".equals(txtEditNaam.getText()))
+        if ("".equals(txtEditNaam.getText()))
         {
             JOptionPane.showMessageDialog(null, "Naam kan niet leeg zijn", "Kan niet bewerken", ERROR_MESSAGE);
         } else {
-        }
+        
         Verzameling verzameling = new Verzameling();
         verzameling.setId(Integer.parseInt(lblId.getText()));
         verzameling.setNaam(txtEditNaam.getText());
@@ -373,7 +378,10 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
         verzameling.setCategoryId(cmbEditCategorie.getSelectedIndex());
         verzameling.setTypeId(cmbEditType.getSelectedIndex());
         VerzamelingService.VerzamelingOpslaan(verzameling);
+        ClearTextboxes();
+            ShowEditItems(false);
         RefreshList();
+        }
     }//GEN-LAST:event_btnBewerkenActionPerformed
 
     private void btnVerwijderenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderenActionPerformed
@@ -381,7 +389,8 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
 
            if ( VerzamelingService.VerzamelingVerwijderen(Integer.parseInt(lblId.getText())))
            {
-               
+               ClearTextboxes();
+               ShowEditItems(false);
            }
            else
            {
@@ -391,9 +400,18 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
         pnlEdit.setVisible(false);
         pnlEdit.validate();
         pnlEdit.repaint();
+        
         RefreshList();
     }//GEN-LAST:event_btnVerwijderenActionPerformed
 
+    private void ClearTextboxes()
+    {
+        txtBeschrijving.setText("");
+        txtEditBeschrijving.setText("");
+        txtEditNaam.setText("");
+        txtNaam.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -450,16 +468,14 @@ public final class frmVerzamelingBeheer extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label1;
     private java.awt.Label label10;
-    private java.awt.Label label11;
     private java.awt.Label label2;
     private java.awt.Label label4;
     private java.awt.Label label5;
     private java.awt.Label label6;
-    private java.awt.Label label7;
-    private java.awt.Label label8;
     private java.awt.Label label9;
-    private javax.swing.JLabel lblError;
+    private java.awt.Label lblCategorie;
     private javax.swing.JLabel lblId;
+    private java.awt.Label lblType;
     private javax.swing.JList lstVerzamelingen;
     private java.awt.Panel pnlEdit;
     private javax.swing.JTextField txtBeschrijving;
